@@ -8,32 +8,35 @@ const DIR = {
   RIGHT: 'RIGHT',
 };
 
-const EMPTY_TILE = -1;
+function getTiles(boardSize) {
+  return Array(boardSize ** 2 - 1)
+    .fill()
+    .map((_, i) => i + 1);
+}
 
 function getInitialState() {
   const boardSize = 4;
-  const tiles = shuffle(
-    Array(boardSize ** 2 - 1)
-      .fill()
-      .map((_, i) => i + 1)
-  );
+  const tiles = [...shuffle(getTiles(boardSize)), undefined];
+  const emptyIndex = tiles.length - 1;
 
-  return {
-    boardSize: 4,
-    tiles: [...tiles, EMPTY_TILE],
-    emptyIndex: tiles.length,
-  };
+  return { boardSize, tiles, emptyIndex };
 }
 
 function canMove(state, index) {
-  return (
-    index >= 0 &&
-    index < state.tiles.length &&
-    (state.emptyIndex - state.boardSize === index ||
-      state.emptyIndex + state.boardSize === index ||
-      state.emptyIndex - 1 === index ||
-      state.emptyIndex + 1 === index)
-  );
+  const { boardSize, emptyIndex } = state;
+
+  const isInBoard = index >= 0 && index < boardSize ** 2;
+
+  if (!isInBoard) {
+    return false;
+  }
+
+  const isAboveEmpty = emptyIndex - boardSize === index;
+  const isBelowEmpty = emptyIndex + boardSize === index;
+  const isLeftToEmpty = emptyIndex % boardSize > 0 && emptyIndex - 1 === index;
+  const isRightToEmpty = emptyIndex % boardSize < boardSize - 1 && emptyIndex + 1 === index;
+
+  return isAboveEmpty || isBelowEmpty || isLeftToEmpty || isRightToEmpty;
 }
 
 function moveDir(state, dir) {

@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 
 import s from './styles.less';
 
 export default function Tile(props) {
-  // TODO: Add some non-hardcoded stuff
-  if (props.value === -1) {
-    return null;
-  }
-  const row = Math.floor(props.index / 4);
-  const column = props.index % 4;
-  const style = {
-    left: `${4 * column}rem`,
-    top: `${4 * row}rem`,
-  };
+  useEffect(() => {
+    console.log('CREATED', props.value);
+  }, [props.value]);
+
+  useEffect(() => {
+    console.log('UPDATED', props.value, props.row, props.column);
+  }, [props.value, props.column, props.row]);
+
   return (
     <div
-      className={cn(s.tile, { [s.canMove]: props.canMove })}
+      className={cn(
+        s.tile,
+        { [s.canMove]: props.canMove },
+        s[`col${props.column}`],
+        s[`row${props.row}`]
+      )}
       onClick={props.onClick}
-      style={style}
     >
       {props.value}
     </div>

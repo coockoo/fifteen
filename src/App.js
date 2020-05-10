@@ -4,6 +4,10 @@ import { hot } from 'react-hot-loader/root';
 import game from 'Game';
 
 import Board from 'Components/Board';
+import Button from 'Components/Button';
+import Tile from 'Components/Tile';
+
+import s from 'Styles/app.less';
 
 const keyCodeDirs = {
   ArrowLeft: game.DIR.LEFT,
@@ -13,7 +17,7 @@ const keyCodeDirs = {
 };
 
 function App() {
-  const [state, setState] = useState(game.getInitialState());
+  const [state, setState] = useState({ tiles: [], boardSize: 0, emptyIndex: 0 });
 
   const moveTile = useCallback(
     (index) => {
@@ -21,6 +25,17 @@ function App() {
     },
     [state]
   );
+
+  const shuffle = () => {
+    const doShuffle = confirm('Do you really want to shuffle?');
+    if (doShuffle) {
+      setState(game.getInitialState());
+    }
+  };
+
+  useEffect(() => {
+    setState(game.getInitialState());
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -39,7 +54,26 @@ function App() {
 
   return (
     <StrictMode>
-      <Board tiles={state.tiles} onTileClick={moveTile} />
+      <div className={s.board}>
+        <Board>
+          {state.tiles.map((tile, index) =>
+            tile ? (
+              <Tile
+                key={tile}
+                row={Math.floor(index / 4)}
+                column={index % 4}
+                value={tile}
+                onClick={() => moveTile(index)}
+                canMove={true}
+              />
+            ) : null
+          )}
+        </Board>
+      </div>
+      <div className={s.sidebar}>
+        <Button onClick={shuffle}>Shuffle</Button>
+        <p>Tip: Use arrow keys &larr;, &rarr;, &uarr;, &darr; to control board.</p>
+      </div>
     </StrictMode>
   );
 }

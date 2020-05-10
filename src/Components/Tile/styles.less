@@ -2,6 +2,7 @@
 @import '../../Styles/variables.less';
 
 .tile {
+  z-index: 5;
   width: @tileSize;
   height: @tileSize;
   border: 1px solid @mainColor;
@@ -21,4 +22,22 @@
   &:hover {
     background-color: @tileBackgroundHoverColor;
   }
+}
+
+.generate-columns(4);
+
+.generate-columns(@n, @i: 0) when (@i < @n) {
+  .col@{i} {
+    left: @i * 4rem;
+  }
+  .generate-columns(@n, (@i + 1));
+}
+
+.generate-rows(4);
+
+.generate-rows(@n, @i: 0) when (@i < @n) {
+  .row@{i} {
+    top: @i * 4rem;
+  }
+  .generate-rows(@n, (@i + 1));
 }
