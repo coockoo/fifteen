@@ -1,0 +1,106 @@
+.Components-Board-styles__board--3dYMM {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+}
+
+.Components-Button-styles__button--1JqUv {
+  outline: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1rem;
+  border: 1px solid #222;
+  transition: background-color 0.2s ease-in, color 0.1s ease-in 0.1s;
+  font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
+}
+.Components-Button-styles__button--1JqUv:hover,
+.Components-Button-styles__button--1JqUv:active,
+.Components-Button-styles__button--1JqUv:focus {
+  background-color: #222;
+  color: #fff;
+}
+.Components-Button-styles__button--1JqUv:disabled {
+  background-color: #fff;
+  color: #666;
+  border-color: #666;
+  cursor: default;
+}
+
+.Components-Tile-styles__tile--2TNnm {
+  z-index: 5;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid #666;
+  color: #222;
+  font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  position: absolute;
+  font-size: 2rem;
+  background-color: #fff;
+  transition: background-color 0.1s ease-in;
+}
+.Components-Tile-styles__canMove--z4ETi:hover {
+  background-color: #eee;
+}
+.Components-Tile-styles__col0--2aJsq {
+  left: 0rem;
+}
+.Components-Tile-styles__col1--1I1hB {
+  left: 4rem;
+}
+.Components-Tile-styles__col2--3-uo_ {
+  left: 8rem;
+}
+.Components-Tile-styles__col3--2uOx1 {
+  left: 12rem;
+}
+.Components-Tile-styles__row0--38JuN {
+  top: 0rem;
+}
+.Components-Tile-styles__row1--3PDQg {
+  top: 4rem;
+}
+.Components-Tile-styles__row2--10hXf {
+  top: 8rem;
+}
+.Components-Tile-styles__row3--2jxAe {
+  top: 12rem;
+}
+
+.Styles-app__board--2-hBm {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+.Styles-app__sidebar--1nPtQ {
+  margin-left: 2rem;
+  flex: 1;
+}
+.Styles-app__sidebar--1nPtQ > p {
+  margin: 1em 0;
+  color: #666;
+  font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+}
+body > div {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+

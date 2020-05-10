@@ -14,7 +14,7 @@ module.exports = {
     bundle: path.join(__dirname, './src/index.js'),
   },
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, './docs'),
     filename: '[name].js',
     publicPath: '/',
   },
@@ -87,7 +87,7 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: path.join(__dirname, './dist'),
+    contentBase: path.join(__dirname, './docs'),
     hot: true,
     historyApiFallback: true,
     proxy: { '/graphql': { target: 'http://localhost:3000' } },
