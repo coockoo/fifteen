@@ -76,7 +76,15 @@ function App() {
       <div className={s.sidebar}>
         <Button onClick={shuffle}>Shuffle</Button>
         <p>Tip: Use arrow keys &uarr;, &darr;, &larr;, &rarr; to control board.</p>
-        <h1 className={cn({ [s.hidden]: !game.isWin(state) })}>You won!</h1>
+        <h1>
+          {game.isWin(state) ? (
+            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+              You won!
+            </a>
+          ) : (
+            <span>&nbsp;</span>
+          )}
+        </h1>
       </div>
     </StrictMode>
   );

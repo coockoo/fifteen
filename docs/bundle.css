@@ -64,7 +64,7 @@
   color: #666;
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
 }
-.Styles-app__sidebar--1nPtQ > h1 {
+.Styles-app__sidebar--1nPtQ > h1 a {
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
   color: #73ab61;
   font-size: 2rem;
