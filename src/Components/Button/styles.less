@@ -1,25 +1,26 @@
-@import '../../Styles/global.less';
+@import '../../Styles/variables.less';
 
 .button {
   outline: none;
-  padding: 2px 4px;
+  padding: 0.25rem 0.5rem;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 20px;
-  border: 1px solid #222;
+  font-size: 1rem;
+  line-height: 1rem;
+  border: 1px solid @mainColor;
   transition: background-color 0.2s ease-in, color 0.1s ease-in 0.1s;
+  font-family: @fontFamily;
 
   &:hover,
   &:active,
   &:focus {
-    background-color: #222;
+    background-color: @mainColor;
     color: #fff;
   }
 
   &:disabled {
     background-color: #fff;
-    color: #ccc;
-    border-color: #ccc;
+    color: @secondaryColor;
+    border-color: @secondaryColor;
     cursor: default;
   }
 }

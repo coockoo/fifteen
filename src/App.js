@@ -50,8 +50,6 @@ function App() {
     };
   }, [state]);
 
-  // TODO: Add legend about keys
-
   return (
     <StrictMode>
       <div className={s.board}>
