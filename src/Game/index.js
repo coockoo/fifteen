@@ -8,7 +8,7 @@ const DIR = {
   RIGHT: 'RIGHT',
 };
 
-function getTiles(boardSize) {
+function getTileValues(boardSize) {
   return Array(boardSize ** 2 - 1)
     .fill()
     .map((_, i) => i + 1);
@@ -16,10 +16,17 @@ function getTiles(boardSize) {
 
 function getInitialState() {
   const boardSize = 4;
-  const tiles = [...shuffle(getTiles(boardSize)), undefined];
+  const tiles = [...shuffle(getTileValues(boardSize)), undefined];
+  const tileIndices = {};
+  tiles.forEach((tile, index) => {
+    if (!tile) {
+      return;
+    }
+    tileIndices[tile] = index;
+  });
   const emptyIndex = tiles.length - 1;
 
-  return { boardSize, tiles, emptyIndex };
+  return { boardSize, tiles, tileIndices, emptyIndex };
 }
 
 function canMove(state, index) {
@@ -62,11 +69,11 @@ function moveDir(state, dir) {
   return doMove(state, moveIndex);
 }
 
-function moveTile(state, index) {
-  if (!canMove(state, index)) {
+function moveTile(state, tile) {
+  if (!canMove(state, tile.index)) {
     return state;
   }
-  return doMove(state, index);
+  return doMove(state, tile.index);
 }
 
 function doMove(state, index) {
@@ -74,7 +81,29 @@ function doMove(state, index) {
     ...state,
     tiles: swap(state.tiles, index, state.emptyIndex),
     emptyIndex: index,
+    tileIndices: {
+      ...state.tileIndices,
+      [state.tiles[index]]: state.emptyIndex,
+    },
   };
+}
+
+function getRow(state, tile) {
+  return Math.floor(state.tileIndices[tile] / state.boardSize);
+}
+
+function getColumn(state, tile) {
+  return Math.floor(state.tileIndices[tile] % state.boardSize);
+}
+
+function getTiles(state) {
+  return state.tiles
+    .filter((tile) => !!tile)
+    .map((tile) => ({
+      value: tile,
+      row: getRow(state, tile),
+      column: getColumn(state, tile),
+    }));
 }
 
 export default {
@@ -82,4 +111,5 @@ export default {
   getInitialState,
   moveDir,
   moveTile,
+  getTiles,
 };

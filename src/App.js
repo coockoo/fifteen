@@ -1,4 +1,4 @@
-import React, { StrictMode, useState, useEffect, useCallback } from 'react';
+import React, { StrictMode, useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import game from 'Game';
@@ -18,13 +18,6 @@ const keyCodeDirs = {
 
 function App() {
   const [state, setState] = useState({ tiles: [], boardSize: 0, emptyIndex: 0 });
-
-  const moveTile = useCallback(
-    (index) => {
-      setState(game.moveTile(state, index));
-    },
-    [state]
-  );
 
   const shuffle = () => {
     const doShuffle = confirm('Do you really want to shuffle?');
@@ -54,23 +47,21 @@ function App() {
     <StrictMode>
       <div className={s.board}>
         <Board>
-          {state.tiles.map((tile, index) =>
-            tile ? (
-              <Tile
-                key={tile}
-                row={Math.floor(index / 4)}
-                column={index % 4}
-                value={tile}
-                onClick={() => moveTile(index)}
-                canMove={true}
-              />
-            ) : null
-          )}
+          {game.getTiles(state).map((tile) => (
+            <Tile
+              key={tile.value}
+              row={tile.row}
+              column={tile.column}
+              value={tile.value}
+              onClick={() => setState(game.moveTile(state, tile))}
+              canMove={true}
+            />
+          ))}
         </Board>
       </div>
       <div className={s.sidebar}>
         <Button onClick={shuffle}>Shuffle</Button>
-        <p>Tip: Use arrow keys &larr;, &rarr;, &uarr;, &darr; to control board.</p>
+        <p>Tip: Use arrow keys &uarr;, &darr;, &larr;, &rarr; to control board.</p>
       </div>
     </StrictMode>
   );
