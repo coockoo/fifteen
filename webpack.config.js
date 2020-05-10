@@ -16,7 +16,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, './docs'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: isDev ? '/' : '/fifteen/',
   },
   resolve: {
     alias: {

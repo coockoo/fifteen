@@ -106,10 +106,18 @@ function getTiles(state) {
     }));
 }
 
+function isWin(state) {
+  const r = state.tiles.every((tile, index) => {
+    return !tile || tile - 1 === index;
+  });
+  return r;
+}
+
 export default {
   DIR,
   getInitialState,
   moveDir,
   moveTile,
   getTiles,
+  isWin,
 };

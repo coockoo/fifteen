@@ -1,5 +1,6 @@
 import React, { StrictMode, useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import cn from 'classnames';
 
 import game from 'Game';
 
@@ -62,6 +63,7 @@ function App() {
       <div className={s.sidebar}>
         <Button onClick={shuffle}>Shuffle</Button>
         <p>Tip: Use arrow keys &uarr;, &darr;, &larr;, &rarr; to control board.</p>
+        <h1 className={cn({ [s.hidden]: !game.isWin(state) })}>You won!</h1>
       </div>
     </StrictMode>
   );

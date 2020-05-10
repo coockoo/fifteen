@@ -83,9 +83,18 @@
   flex: 1;
 }
 .Styles-app__sidebar--1nPtQ > p {
-  margin: 1em 0;
+  margin: 1rem 0;
   color: #666;
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
+}
+.Styles-app__sidebar--1nPtQ > h1 {
+  font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
+  color: #73ab61;
+  font-size: 2rem;
+  font-weight: normal;
+}
+.Styles-app__hidden--9pAei {
+  visibility: hidden;
 }
 
 * {
