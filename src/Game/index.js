@@ -70,10 +70,11 @@ function moveDir(state, dir) {
 }
 
 function moveTile(state, tile) {
-  if (!canMove(state, tile.index)) {
+  const index = state.tileIndices[tile.value];
+  if (!canMove(state, index)) {
     return state;
   }
-  return doMove(state, tile.index);
+  return doMove(state, index);
 }
 
 function doMove(state, index) {
@@ -113,6 +114,11 @@ function isWin(state) {
   return r;
 }
 
+function canMoveTile(state, tile) {
+  const index = state.tileIndices[tile.value];
+  return canMove(state, index);
+}
+
 export default {
   DIR,
   getInitialState,
@@ -120,4 +126,5 @@ export default {
   moveTile,
   getTiles,
   isWin,
+  canMoveTile,
 };

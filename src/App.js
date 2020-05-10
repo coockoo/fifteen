@@ -55,7 +55,7 @@ function App() {
               column={tile.column}
               value={tile.value}
               onClick={() => setState(game.moveTile(state, tile))}
-              canMove={true}
+              canMove={game.canMoveTile(state, tile)}
             />
           ))}
         </Board>

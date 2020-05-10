@@ -37,12 +37,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   border-radius: 3px;
   position: absolute;
   font-size: 2rem;
   background-color: #fff;
   transition: background-color 0.1s ease-in;
+  cursor: default;
+}
+.Components-Tile-styles__canMove--z4ETi {
+  cursor: pointer;
 }
 .Components-Tile-styles__canMove--z4ETi:hover {
   background-color: #eee;
