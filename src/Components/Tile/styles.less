@@ -1,0 +1,24 @@
+// TODO: Add path resolve module
+@import '../../Styles/variables.less';
+
+.tile {
+  width: @tileSize;
+  height: @tileSize;
+  border: 1px solid @mainColor;
+  color: @mainColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  position: absolute;
+  font-size: 2rem;
+  background-color: @tileBackgroundColor;
+  transition: background-color 0.1s ease-in;
+}
+
+.canMove {
+  &:hover {
+    background-color: @tileBackgroundHoverColor;
+  }
+}
