@@ -32,6 +32,7 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.0.4",
+    "jest": "^26.0.1",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
@@ -51,5 +52,10 @@
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
     "react-spring": "^8.0.27"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src"
+    ]
   }
 }

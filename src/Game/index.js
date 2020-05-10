@@ -1,5 +1,6 @@
 import shuffle from 'Utils/shuffle';
 import swap from 'Utils/swap';
+import toIndexMap from 'Utils/toIndexMap';
 
 const DIR = {
   UP: 'UP',
@@ -17,13 +18,7 @@ function getTileValues(boardSize) {
 function getInitialState() {
   const boardSize = 4;
   const tiles = [...shuffle(getTileValues(boardSize)), undefined];
-  const tileIndices = {};
-  tiles.forEach((tile, index) => {
-    if (!tile) {
-      return;
-    }
-    tileIndices[tile] = index;
-  });
+  const tileIndices = toIndexMap(tiles);
   const emptyIndex = tiles.length - 1;
 
   return { boardSize, tiles, tileIndices, emptyIndex };
