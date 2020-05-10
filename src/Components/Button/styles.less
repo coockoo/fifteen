@@ -1,0 +1,25 @@
+@import '../../Styles/global.less';
+
+.button {
+  outline: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  border: 1px solid #222;
+  transition: background-color 0.2s ease-in, color 0.1s ease-in 0.1s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #222;
+    color: #fff;
+  }
+
+  &:disabled {
+    background-color: #fff;
+    color: #ccc;
+    border-color: #ccc;
+    cursor: default;
+  }
+}
