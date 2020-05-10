@@ -5,26 +5,11 @@ import game from 'Game';
 
 import Board from 'Components/Board';
 
-const keyCodeIndices = {
-  Digit1: 0,
-  Digit2: 1,
-  Digit3: 2,
-  Digit4: 3,
-
-  KeyQ: 4,
-  KeyW: 5,
-  KeyE: 6,
-  KeyR: 7,
-
-  KeyA: 8,
-  KeyS: 9,
-  KeyD: 10,
-  KeyF: 11,
-
-  KeyZ: 12,
-  KeyX: 13,
-  KeyC: 14,
-  KeyV: 15,
+const keyCodeDirs = {
+  ArrowLeft: game.DIR.LEFT,
+  ArrowRight: game.DIR.RIGHT,
+  ArrowDown: game.DIR.DOWN,
+  ArrowUp: game.DIR.UP,
 };
 
 function App() {
@@ -38,17 +23,18 @@ function App() {
   );
 
   useEffect(() => {
-    const handleKeyPress = (e) => {
-      const index = keyCodeIndices[e.code];
-      if (index !== undefined) {
-        moveTile(index);
+    const handleKeyDown = (e) => {
+      const dir = keyCodeDirs[e.code];
+      if (dir) {
+        setState(game.moveDir(state, dir));
       }
     };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [state]);
 
-    document.addEventListener('keypress', handleKeyPress, { once: true });
-  }, [moveTile]);
-
-  // TODO: Use arrow keys to handle (only one move allowed for each key)
   // TODO: Add legend about keys
 
   return (

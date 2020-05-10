@@ -1,61 +1,82 @@
 import shuffle from 'Utils/shuffle';
+import swap from 'Utils/swap';
+
+const DIR = {
+  UP: 'UP',
+  DOWN: 'DOWN',
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+};
+
+const EMPTY_TILE = -1;
 
 function getInitialState() {
+  const boardSize = 4;
+  const tiles = shuffle(
+    Array(boardSize ** 2 - 1)
+      .fill()
+      .map((_, i) => i + 1)
+  );
+
   return {
     boardSize: 4,
-    tiles: shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, -1]),
+    tiles: [...tiles, EMPTY_TILE],
+    emptyIndex: tiles.length,
   };
 }
 
-function getMoveIndex(state, index) {
-  // Left neighbour
-  if (index % state.boardSize !== 0 && state.tiles[index - 1] === -1) {
-    return index - 1;
-  }
-  // Right neighbour
-  if (index % state.boardSize < state.boardSize - 1 && state.tiles[index + 1] === -1) {
-    return index + 1;
-  }
-  // Top neighbour
-  if (index >= state.boardSize && state.tiles[index - state.boardSize] === -1) {
-    return index - state.boardSize;
-  }
-  // Bottom neighbour
-  if (
-    index < state.boardSize * state.boardSize - state.boardSize &&
-    state.tiles[index + state.boardSize] === -1
-  ) {
-    return index + state.boardSize;
-  }
-  return null;
+function canMove(state, index) {
+  return (
+    index >= 0 &&
+    index < state.tiles.length &&
+    (state.emptyIndex - state.boardSize === index ||
+      state.emptyIndex + state.boardSize === index ||
+      state.emptyIndex - 1 === index ||
+      state.emptyIndex + 1 === index)
+  );
 }
 
-function swap(arr, indexA, indexB) {
-  const valueA = arr[indexA];
-  const valueB = arr[indexB];
-  return arr.map((value, index) => {
-    if (index === indexA) {
-      return valueB;
-    }
-    if (index === indexB) {
-      return valueA;
-    }
-    return value;
-  });
+function moveDir(state, dir) {
+  let moveIndex = null;
+
+  if (dir === DIR.UP) {
+    moveIndex = state.emptyIndex + state.boardSize;
+  }
+  if (dir === DIR.DOWN) {
+    moveIndex = state.emptyIndex - state.boardSize;
+  }
+  if (dir === DIR.LEFT) {
+    moveIndex = state.emptyIndex + 1;
+  }
+  if (dir === DIR.RIGHT) {
+    moveIndex = state.emptyIndex - 1;
+  }
+
+  if (!canMove(state, moveIndex)) {
+    return state;
+  }
+
+  return doMove(state, moveIndex);
 }
 
 function moveTile(state, index) {
-  const moveIndex = getMoveIndex(state, index);
-  if (moveIndex !== null) {
-    return {
-      ...state,
-      tiles: swap(state.tiles, index, moveIndex),
-    };
+  if (!canMove(state, index)) {
+    return state;
   }
-  return state;
+  return doMove(state, index);
+}
+
+function doMove(state, index) {
+  return {
+    ...state,
+    tiles: swap(state.tiles, index, state.emptyIndex),
+    emptyIndex: index,
+  };
 }
 
 export default {
+  DIR,
   getInitialState,
+  moveDir,
   moveTile,
 };
