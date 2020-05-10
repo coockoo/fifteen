@@ -1,6 +1,7 @@
 import React, { StrictMode, useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import cn from 'classnames';
+import { useTransition, animated } from 'react-spring';
 
 import game from 'Game';
 
@@ -44,19 +45,31 @@ function App() {
     };
   }, [state]);
 
+  const transitions = useTransition(game.getTiles(state), (item) => item.value, {
+    from: ({ row, column }) => ({ row, column }),
+    enter: ({ row, column }) => ({ row, column }),
+    update: ({ row, column }) => ({ row, column }),
+  });
+
   return (
     <StrictMode>
       <div className={s.board}>
         <Board>
-          {game.getTiles(state).map((tile) => (
-            <Tile
-              key={tile.value}
-              row={tile.row}
-              column={tile.column}
-              value={tile.value}
-              onClick={() => setState(game.moveTile(state, tile))}
-              canMove={game.canMoveTile(state, tile)}
-            />
+          {transitions.map(({ item, props: { row, column }, key }) => (
+            <animated.div
+              key={key}
+              style={{
+                position: 'absolute',
+                top: row.interpolate((r) => `${r * 4}rem`),
+                left: column.interpolate((c) => `${c * 4}rem`),
+              }}
+            >
+              <Tile
+                value={item.value}
+                onClick={() => setState(game.moveTile(state, item))}
+                canMove={game.canMoveTile(state, item)}
+              />
+            </animated.div>
           ))}
         </Board>
       </div>

@@ -28,7 +28,6 @@
 }
 
 .Components-Tile-styles__tile--2TNnm {
-  z-index: 5;
   width: 4rem;
   height: 4rem;
   border: 1px solid #666;
@@ -38,7 +37,6 @@
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  position: absolute;
   font-size: 2rem;
   background-color: #fff;
   transition: background-color 0.1s ease-in;
@@ -49,30 +47,6 @@
 }
 .Components-Tile-styles__canMove--z4ETi:hover {
   background-color: #eee;
-}
-.Components-Tile-styles__col0--2aJsq {
-  left: 0rem;
-}
-.Components-Tile-styles__col1--1I1hB {
-  left: 4rem;
-}
-.Components-Tile-styles__col2--3-uo_ {
-  left: 8rem;
-}
-.Components-Tile-styles__col3--2uOx1 {
-  left: 12rem;
-}
-.Components-Tile-styles__row0--38JuN {
-  top: 0rem;
-}
-.Components-Tile-styles__row1--3PDQg {
-  top: 4rem;
-}
-.Components-Tile-styles__row2--10hXf {
-  top: 8rem;
-}
-.Components-Tile-styles__row3--2jxAe {
-  top: 12rem;
 }
 
 .Styles-app__board--2-hBm {
