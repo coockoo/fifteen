@@ -78,7 +78,7 @@ function App() {
         <p>Tip: Use arrow keys &uarr;, &darr;, &larr;, &rarr; to control board.</p>
         <h1>
           {game.isWin(state) ? (
-            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
               You won!
             </a>
           ) : (
