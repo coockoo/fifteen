@@ -1,6 +1,6 @@
 {
   "name": "fifteen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "git@github.com:coockoo/fifteen.git",
   "description": "Fifteen game",
   "main": "src/index.js",
