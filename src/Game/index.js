@@ -15,9 +15,27 @@ function getTileValues(boardSize) {
     .map((_, i) => i + 1);
 }
 
+function canWin(arr) {
+  let sum = 0;
+  // TODO: Replace current algorithm implementation with O(n) if possible
+  for (let i = 0; i < arr.length - 1; ++i) {
+    for (let j = i + 1; j < arr.length; ++j) {
+      if (arr[i] > arr[j]) {
+        sum += 1;
+      }
+    }
+  }
+  return sum % 2 === 0;
+}
+
 function getInitialState() {
   const boardSize = 4;
-  const tiles = [...shuffle(getTileValues(boardSize)), undefined];
+  let tiles = shuffle(getTileValues(boardSize));
+  // Shuffle untill we can get winnable position
+  while (!canWin(tiles)) {
+    tiles = shuffle(tiles);
+  }
+  tiles.push(undefined);
   const tileIndices = toIndexMap(tiles);
   const emptyIndex = tiles.length - 1;
 
@@ -89,7 +107,7 @@ function getRow(state, tile) {
 }
 
 function getColumn(state, tile) {
-  return Math.floor(state.tileIndices[tile] % state.boardSize);
+  return state.tileIndices[tile] % state.boardSize;
 }
 
 function getTiles(state) {
@@ -103,10 +121,9 @@ function getTiles(state) {
 }
 
 function isWin(state) {
-  const r = state.tiles.every((tile, index) => {
+  return state.tiles.every((tile, index) => {
     return !tile || tile - 1 === index;
   });
-  return r;
 }
 
 function canMoveTile(state, tile) {
