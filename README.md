@@ -1,4 +1,4 @@
-# Fifteen Game
+# Fifteen Puzzle
 
 Only 0.1% can beat this game https://coockoo.github.io/fifteen/
 
@@ -6,7 +6,3 @@ Only 0.1% can beat this game https://coockoo.github.io/fifteen/
 
 - `npm install`
 - `npm run dev`
-
-## Note
-
-Not to be used on phone.
