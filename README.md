@@ -1,6 +1,6 @@
 # Fifteen Puzzle
 
-Only 0.1% can beat this game https://coockoo.github.io/fifteen/
+Only 0.1% can beat this puzzle https://coockoo.github.io/fifteen/
 
 ## Run in dev
 
