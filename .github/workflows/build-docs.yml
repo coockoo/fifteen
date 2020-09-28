@@ -1,0 +1,33 @@
+name: Build docs
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  NODE_ENV: production
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@2
+
+      - name: Use Node.js v12.16.1
+        uses: actions/setup-node@v1
+        with:
+          node-version: v12.16.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # TODO: Add release step (push to the master branch)
