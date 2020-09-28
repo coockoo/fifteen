@@ -5,9 +5,6 @@ on:
     branches:
       - master
 
-env:
-  NODE_ENV: production
-
 jobs:
   build:
     name: Build
@@ -28,6 +25,8 @@ jobs:
         run: npm run lint
 
       - name: Build
+        env:
+          NODE_ENV: production
         run: npm run build
 
       # TODO: Add release step (push to the master branch)
