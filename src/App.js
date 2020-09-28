@@ -1,6 +1,5 @@
 import React, { StrictMode, useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
-import cn from 'classnames';
 import { useTransition, animated } from 'react-spring';
 
 import game from 'Game';
