@@ -29,4 +29,14 @@ jobs:
           NODE_ENV: production
         run: npm run build
 
-      # TODO: Add release step (push to the master branch)
+      - name: Commit and Push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EMAIL: ${{ secrets.EMAIL }}
+          NAME: ${{ secrets.NAME }}
+        run: |
+          git config --global user.email "$EMAIL"
+          git config --global user.name "$NAME"
+          git add docs
+          git commit -m "Build of the docs/ via GitHub Action"
+          git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
