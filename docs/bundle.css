@@ -1,10 +1,10 @@
-.Components-Board-styles__board--3dYMM {
+.Components-Board-styles__board--hb9KJ {
   position: relative;
   width: 16rem;
   height: 16rem;
 }
 
-.Components-Button-styles__button--1JqUv {
+.Components-Button-styles__button--HzSF0 {
   outline: none;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
@@ -14,20 +14,20 @@
   transition: background-color 0.2s ease-in, color 0.1s ease-in 0.1s;
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
 }
-.Components-Button-styles__button--1JqUv:hover,
-.Components-Button-styles__button--1JqUv:active,
-.Components-Button-styles__button--1JqUv:focus {
+.Components-Button-styles__button--HzSF0:hover,
+.Components-Button-styles__button--HzSF0:active,
+.Components-Button-styles__button--HzSF0:focus {
   background-color: #222;
   color: #fff;
 }
-.Components-Button-styles__button--1JqUv:disabled {
+.Components-Button-styles__button--HzSF0:disabled {
   background-color: #fff;
   color: #666;
   border-color: #666;
   cursor: default;
 }
 
-.Components-Tile-styles__tile--2TNnm {
+.Components-Tile-styles__tile--XxHiH {
   width: 4rem;
   height: 4rem;
   border: 1px solid #666;
@@ -42,54 +42,54 @@
   transition: background-color 0.1s ease-in;
   cursor: default;
 }
-.Components-Tile-styles__canMove--z4ETi {
+.Components-Tile-styles__canMove--fH6sK {
   cursor: pointer;
 }
-.Components-Tile-styles__canMove--z4ETi:hover {
+.Components-Tile-styles__canMove--fH6sK:hover {
   background-color: #eee;
 }
 
-.Styles-app__board--2-hBm {
+.Styles-app__board--QoHz1 {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Styles-app__sidebar--1nPtQ {
+.Styles-app__sidebar--syT6f {
   margin-top: 2rem;
   max-width: 16rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.Styles-app__sidebar--1nPtQ > p {
+.Styles-app__sidebar--syT6f > p {
   display: none;
   margin: 1rem 0;
   color: #666;
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
   max-width: 16rem;
 }
-.Styles-app__sidebar--1nPtQ > h1 a {
+.Styles-app__sidebar--syT6f > h1 a {
   font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
   color: #73ab61;
   font-size: 2rem;
   font-weight: normal;
 }
-.Styles-app__hidden--9pAei {
+.Styles-app__hidden--qDFPR {
   visibility: hidden;
 }
 @media (min-width: 42rem) {
-  .Styles-app__board--2-hBm {
+  .Styles-app__board--QoHz1 {
     margin: 2rem;
     justify-content: flex-end;
   }
-  .Styles-app__sidebar--1nPtQ {
+  .Styles-app__sidebar--syT6f {
     flex: 1;
     align-items: flex-start;
     margin: 2rem;
     max-width: initial;
   }
-  .Styles-app__sidebar--1nPtQ > p {
+  .Styles-app__sidebar--syT6f > p {
     display: inline-block;
   }
 }
