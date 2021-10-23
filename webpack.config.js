@@ -48,7 +48,7 @@ module.exports = {
                 mode: 'local',
                 exportGlobals: true,
                 localIdentName: '[path][name]__[local]--[hash:base64:5]',
-                context: path.join(__dirname, './src'),
+                localIdentContext: path.join(__dirname, './src'),
               },
             },
           },
@@ -70,9 +70,8 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: path.join(__dirname, './docs'),
+    static: { directory: path.join(__dirname, './docs') },
     hot: true,
     historyApiFallback: true,
-    proxy: { '/graphql': { target: 'http://localhost:3000' } },
   },
 };
