@@ -55,23 +55,6 @@ module.exports = {
           { loader: 'less-loader' },
         ],
       },
-      {
-        test: /\.ttf$/,
-        include: path.join(__dirname, './fonts'),
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: './[path][name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.gql$/,
-        include: path.join(__dirname, './src'),
-        use: 'raw-loader',
-      },
     ],
   },
   plugins: [
